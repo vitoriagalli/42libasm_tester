@@ -2,17 +2,23 @@
 
 test_input()
 {
-	./atoi_base "$1" > "$1".txt
-	diff "$1".txt "$1".exp.txt > diffs/atoi_base."$1".txt
-	DIFF=$(diff "$1".txt "$1".exp.txt)
-	if [ "$DIFF" != "" ]
+	ERROR=$( ./atoi_base "$1" 2>&1 >/dev/null )
+	if [ $? = 0 ]
 	then
-		echo -e "\033[0;31m[KO]\033[0m"
+		./atoi_base "$1" > "$1".txt
+		diff "$1".txt "$1".exp.txt > diffs/atoi_base."$1".txt
+		DIFF=$(diff "$1".txt "$1".exp.txt)
+		if [ "$DIFF" != "" ]
+		then
+			echo -e "\033[0;31m[KO]\033[0m"
+		else
+			echo -e "\033[0;32m[OK]\033[0m"
+			rm -rf diffs/atoi_base."$1".txt
+		fi
+		rm -rf "$1".txt "$1".exp.txt
 	else
-		echo -e "\033[0;32m[OK]\033[0m"
-		rm -rf diffs/atoi_base."$1".txt
+		echo -e "\033[0;31m[ERROR]\033[0m"
 	fi
-	rm -rf "$1".txt "$1".exp.txt
 }
 
 echo "56" > 1.exp.txt
@@ -38,12 +44,15 @@ echo "0" > 19.exp.txt
 echo -e ""
 echo -e "\033[0;1m> ft_atoi_base\033[0m"
 
-clang testers/test_atoi_base.c -L. -lasm -o atoi_base
-
-for i in {1..19}
-do
-	test_input $i
-done
-
-rm -rf atoi_base
-
+COMP=$( clang testers/test_atoi_base.c -L. -lasm -o atoi_base 2>&1 >/dev/null )
+if [ $? = 0 ]
+then
+	clang testers/test_atoi_base.c -L. -lasm -o atoi_base
+	for i in {1..19}
+	do
+		test_input $i
+	done
+	rm -rf atoi_base
+else
+	echo -e "\033[0;31m[DONT COMPILE]\033[0m"
+fi
