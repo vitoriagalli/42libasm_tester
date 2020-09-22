@@ -2,17 +2,41 @@
 
 declare -x ORIG=0
 declare -x IMPLEM=1
+filepath=`pwd`
 
 rm -rf unit_tests/diffs
 mkdir unit_tests/diffs
-echo -e "---------------------------------"
-echo -e "|       \033[0;1m LIBASM UNIT TEST\033[0m       |"
-echo -e "---------------------------------"
+
+function echo_title()
+{
+	echo -e ""
+	echo -e ""
+	echo -e "\033[0;96m ██╗     ██╗██████╗  █████╗ ███████╗███╗   ███╗ \033[0m"
+	echo -e "\033[0;96m ██║     ██║██╔══██╗██╔══██╗██╔════╝████╗ ████║ \033[0m"
+	echo -e "\033[0;96m ██║     ██║██████╔╝███████║███████╗██╔████╔██║ \033[0m"
+	echo -e "\033[0;96m ██║     ██║██╔══██╗██╔══██║╚════██║██║╚██╔╝██║ \033[0m"
+	echo -e "\033[0;96m ███████╗██║██████╔╝██║  ██║███████║██║ ╚═╝ ██║ \033[0m"
+	echo -e "\033[0;96m ╚══════╝╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ \033[0m"
+	echo -e "\033[0;96m                          ┌┬┐┌─┐┌─┐┌┬┐┌─┐┬─┐ \033[0m"
+	echo -e "\033[0;96m                           │ ├┤ └─┐ │ ├┤ ├┬┘ \033[0m"
+	echo -e "\033[0;96m                           ┴ └─┘└─┘ ┴ └─┘┴└─ \033[0m"
+}
+
+function echo_subtitle_bonus()
+{
+	echo -e "\033[0;96m +-+-+-+-+-+ \033[0m"
+	echo -e "\033[0;96m |B|O|N|U|S| \033[0m"
+	echo -e "\033[0;96m +-+-+-+-+-+ \033[0m"
+}
 
 function run_bonus()
 {
+	cd ../
 	make bonus
-	cd unit_tests
+	mv libasm.a $filepath/unit_tests/
+	cd $filepath/unit_tests/
+	echo_title
+	echo_subtitle_bonus
 	if [ "$2" == "" ]
 	then
 		bash run_atoi_base.sh
@@ -34,8 +58,11 @@ function run_bonus()
 
 function run_mandatory()
 {
+	cd ../
 	make re
-	cd unit_tests
+	mv libasm.a $filepath/unit_tests/
+	cd $filepath/unit_tests/
+	echo_title
 	if [ "$1" == "" ]
 	then
 		bash run_stdfunct.sh strlen

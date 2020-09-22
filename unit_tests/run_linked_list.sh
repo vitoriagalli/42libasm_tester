@@ -17,8 +17,6 @@ test_input()
 
 run_all_functions()
 {
-	echo -e ""
-	echo -e "\033[0;1m___LINKED LIST___\033[0m"
 	for i in {0..3}
 	do
 		echo -e ""
@@ -41,7 +39,7 @@ run_function()
 
 }
 
-clang testers/test_linked_list.c -L../ -lasm -o linked_list
+clang testers/test_linked_list.c -L. -lasm -o linked_list
 FUNCT=(list_push_front list_size list_sort list_remove_if)
 
 if [ "$1" == "list_push_front" ]; then

@@ -38,7 +38,7 @@ echo "0" > 19.exp.txt
 echo -e ""
 echo -e "\033[0;1m> ft_atoi_base\033[0m"
 
-clang testers/test_atoi_base.c -L../ -lasm -o atoi_base
+clang testers/test_atoi_base.c -L. -lasm -o atoi_base
 
 for i in {1..19}
 do

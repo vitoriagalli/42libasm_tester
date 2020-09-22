@@ -20,7 +20,7 @@ FUNCT=$1
 echo -e ""
 echo -e "\033[0;1m> ft_"$FUNCT"\033[0m"
 
-clang testers/test_"$FUNCT".c -L../ -lasm -o "$FUNCT"
+clang testers/test_"$FUNCT".c -L. -lasm -o "$FUNCT"
 
 test_input 1 "Hello World!"
 test_input 2 "lorem\tipsum\tdolor\nsit\namet\n"

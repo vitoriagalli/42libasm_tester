@@ -42,8 +42,8 @@ FUNCT=$1
 echo -e ""
 echo -e "\033[0;1m> ft_"$FUNCT"\033[0m"
 
-clang testers/test_"$FUNCT"_std.c -L../ -lasm -o "$FUNCT"_std
-clang testers/test_"$FUNCT"_fd.c -L../ -lasm -o "$FUNCT"_fd
+clang testers/test_"$FUNCT"_std.c -L. -lasm -o "$FUNCT"_std
+clang testers/test_"$FUNCT"_fd.c -L. -lasm -o "$FUNCT"_fd
 
 test_std 1
 test_fd 2 $FD_OPEN
