@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a simple shell script that automated tests for the 42 Project Libasm/2020.
+This is a simple shell script that automate tests for the 42 Project Libasm/2020.
 
 * check compilation error
 * check the function output
