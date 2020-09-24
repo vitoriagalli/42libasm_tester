@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:20:50 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/21 22:06:34 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:21:11 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ int	main(int argc, char **argv)
 	if (argv[1][0] == FD_OPEN)
 	{
 		if (argv[2][0] == ORIG)
-			result(&read, fd);
+			result(read, fd);
 		else if (argv[2][0] == IMPLEM)
-			result(&ft_read, fd);
+			result(ft_read, fd);
 	}
 	else if (argv[1][0] == FD_WRONG)
 	{
 		if (argv[2][0] == ORIG)
-			result(&read, fd + 5);
+			result(read, fd + 5);
 		else if (argv[2][0] == IMPLEM)
-			result(&ft_read, fd + 5);
+			result(ft_read, fd + 5);
 	}
 	close (fd);
 	return (0);

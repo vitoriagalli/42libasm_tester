@@ -1,3 +1,2 @@
 bread
-milk
 apple

@@ -6,26 +6,73 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 02:48:54 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/21 22:06:36 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/23 20:31:19 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header_test.h"
 
-void	initialize_lists(t_list **list0, t_list **list1, t_list **list2,
-	t_list **list3)
+static t_list	*ft_create_elem(void *data)
 {
-	*list0 = NULL;
-	*list1 = NULL;
-	ft_list_push_front(list1, "milk");
-	*list2 = NULL;
-	ft_list_push_front(list2, "milk");
-	ft_list_push_front(list2, "milk");
-	ft_list_push_front(list2, "milk");
-	*list3 = NULL;
-	ft_list_push_front(list3, "apple");
-	ft_list_push_front(list3, "milk");
-	ft_list_push_front(list3, "bread");
+	t_list	*node;
+
+	if (!(node = malloc(sizeof(t_list))))
+		return (NULL);
+	node->data = data;
+	node->next = NULL;
+	return (node);
+}
+
+void	list_push_front(t_list **begin_list, void *data)
+{
+	t_list	*node;
+
+	if (!begin_list)
+		return ;
+	if (!(*begin_list))
+		*begin_list = ft_create_elem(data);
+	else
+	{
+		node = ft_create_elem(data);
+		node->next = *begin_list;
+		*begin_list = node;
+	}
+}
+
+void	initialize_list(t_list **list, int index, void (*ft)())
+{
+	if (index == 0)
+		*list = NULL;
+	else if (index == 1)
+	{
+		*list = NULL;
+		ft(list, strdup("milk"));
+	}
+	else if (index == 2)
+	{
+		*list = NULL;
+		ft(list, strdup("milk"));
+		ft(list, strdup("milk"));
+		ft(list, strdup("milk"));
+	}
+	else if (index == 3)
+	{
+		*list = NULL;
+		ft(list, strdup("apple"));
+		ft(list, strdup("milk"));
+		ft(list, strdup("bread"));
+	}
+	else if (index == 4)
+	{
+		*list = NULL;
+		ft(list, strdup("milk"));
+		ft(list, strdup("bread"));
+		ft(list, strdup("milk"));
+		ft(list, strdup("apple"));
+		ft(list, strdup("ZEBRA"));
+		ft(list, strdup("tomato"));
+		ft(list, strdup("milk"));
+	}
 }
 
 void	ft_print_list(t_list *list)
@@ -43,30 +90,28 @@ void	ft_free(void *ptr)
 		free(ptr);
 }
 
-int	main(int argc, char **argv)
+void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
 {
-	int		funct;
-	int		index;
-	t_list	**list;
+	t_list	*aux;
 
-	funct = atoi(argv[1]);
-	index = atoi(argv[2]);
-	list = (t_list **)malloc(sizeof(t_list *) * 4);
-	initialize_lists(&list[0], &list[1], &list[2], &list[3]);
-	if (funct == PUSH_FRONT)
-		ft_print_list(list[index]);
-	else if (funct == SIZE)
-		printf("%i\n", ft_list_size(list[index]));
-	else if (funct == SORT)
+	if (!begin_list || !free_fct)
+		return ;
+	while (begin_list)
 	{
-		ft_list_sort(&list[index], ft_strcmp);
-		ft_print_list(list[index]);
+		aux = begin_list;
+		begin_list = begin_list->next;
+		(free_fct)(aux->data);
+		free(aux);
 	}
-	else if (funct == REMOVE_IF)
-	{
-		ft_list_remove_if(&list[index], "milk", ft_strcmp, ft_free);
-		ft_print_list(list[index]);
-	}
+	begin_list = NULL;
+}
 
-	return (0);
+int		funct_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return *(const unsigned char*)s1 - *(const unsigned char*)s2;
 }

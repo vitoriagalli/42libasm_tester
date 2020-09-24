@@ -11,9 +11,8 @@ This is a simple shell script that automate tests for the 42 Project Libasm/2020
 * check STDIN and file descriptor for read function
 * check STDOUT and file descriptor for write function
 
-Running on Linux
-
 ## Usage
+:warning: Running on VM 42 Linux only
 
 #### Prerequisites
 
@@ -23,7 +22,7 @@ Running on Linux
 #### Build Instructions
 
 Clone this repo into libasm root's directory.\
-Make sure your Makefile has the `make` rule, and `make bonus` rule if you want to test the bonus functions.
+Make sure your Makefile has the `make re` rule, and `make bonus` rule if you want to test the bonus functions.
 
 ```bash
 $ git clone https://github.com/vscabell/42libasm_tester.git

@@ -1,0 +1,7 @@
+ZEBRA
+apple
+bread
+milk
+milk
+milk
+tomato

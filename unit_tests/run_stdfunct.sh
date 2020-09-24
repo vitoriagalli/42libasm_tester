@@ -25,7 +25,6 @@ test_input()
 FUNCT=$1
 echo -e ""
 echo -e "\033[0;1m> ft_"$FUNCT"\033[0m"
-
 COMP=$( clang testers/test_"$FUNCT".c -L. -lasm -o "$FUNCT" 2>&1 >/dev/null )
 if [ $? = 0 ]
 then

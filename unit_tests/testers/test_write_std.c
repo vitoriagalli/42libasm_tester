@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:20:50 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/21 22:07:44 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:20:25 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		main(int argc, char **argv)
 
 	str = "Hello World!";
 	if (argv[1][0] == ORIG)
-		result(&write, str);
+		result(write, str);
 	else if (argv[1][0] == IMPLEM)
-		result(&ft_write, str);
+		result(ft_write, str);
 	return (0);
 }

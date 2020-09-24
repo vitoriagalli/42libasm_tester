@@ -58,7 +58,6 @@ FD_WRONG=1
 FUNCT=$1
 echo -e ""
 echo -e "\033[0;1m> ft_"$FUNCT"\033[0m"
-
 COMP=$( clang testers/test_"$FUNCT"_fd.c -L. -lasm -o "$FUNCT"_fd 2>&1 >/dev/null )
 if [ $? = 0 ]
 then
