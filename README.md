@@ -22,7 +22,8 @@ This is a simple shell script that automate tests for the 42 Project Libasm/2020
 #### Build Instructions
 
 Clone this repo into libasm root's directory.\
-Make sure your Makefile has the `make re` rule, and `make bonus` rule if you want to test the bonus functions.
+Make sure your Makefile has the `make re` rule, and `make bonus` rule if you want to test the bonus functions.\
+Both adding the objects to the `libasm.a` library.
 
 ```bash
 $ git clone https://github.com/vscabell/42libasm_tester.git
