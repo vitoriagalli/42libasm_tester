@@ -38,7 +38,7 @@ test_input()
 			echo -e "\033[0;32m[OK]\033[0m"
 			rm -rf diffs/atoi_base."$1".txt
 		fi
-		rm -rf "$1".txt "$1".exp.txt
+		rm -f "$1".txt "$1".exp.txt
 	else
 		echo -e "\033[0;31m[ERROR]\033[0m"
 	fi
@@ -50,12 +50,12 @@ COMP=$( clang testers/test_atoi_base.c -L. -lasm -o atoi_base 2>&1 >/dev/null )
 if [ $? = 0 ]
 then
 	initialize_expected_results
-	clang testers/test_atoi_base.c -L. -lasm -o atoi_base
+	clang -Wall -Werror -Wextra testers/test_atoi_base.c -L. -lasm -o atoi_base
 	for i in {0..18}
 	do
 		test_input $i
 	done
-	rm -rf atoi_base
+	rm -f atoi_base
 else
 	echo -e "\033[0;31m[DONT COMPILE]\033[0m"
 fi

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:20:50 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/24 02:21:11 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 18:55:37 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 {
 	int	fd;
 
+	(void)argc;
 	fd = open(argv[3], O_RDWR);
 	if (argv[1][0] == FD_OPEN)
 	{

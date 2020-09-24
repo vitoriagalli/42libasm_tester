@@ -26,6 +26,7 @@ void	result(ssize_t (*ft)())
 
 int	main(int argc, char **argv)
 {
+	(void)argc;
 	if (argv[1][0] == ORIG)
 		result(read);
 	else if (argv[1][0] == IMPLEM)

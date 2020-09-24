@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:20:50 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/24 02:20:25 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 18:50:14 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		main(int argc, char **argv)
 {
 	char	*str;
 
+	(void)argc;
 	str = "Hello World!";
 	if (argv[1][0] == ORIG)
 		result(write, str);

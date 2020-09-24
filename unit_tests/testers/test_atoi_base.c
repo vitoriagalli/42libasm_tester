@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 01:58:04 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/24 02:15:21 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 19:03:24 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main(int argc, char **argv)
 	"0 1", "012345\t6789", "01\r", "01234506789", "012345067890", "0123456789",
 	"0123456789", NULL};
 
+	(void)argc;
 	index = atoi(argv[1]);
 	printf("%i\n", ft_atoi_base(str[index], base[index]));
 	return (0);

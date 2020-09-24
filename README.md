@@ -8,8 +8,7 @@ This is a simple shell script that automate tests for the 42 Project Libasm/2020
 * check the function output
 * check the return value
 * check the errno value for functions with system calls
-* check STDIN and file descriptor for read function
-* check STDOUT and file descriptor for write function
+* check memory leak when necessary
 
 ## Usage
 :warning: Running on VM 42 Linux only
@@ -17,7 +16,8 @@ This is a simple shell script that automate tests for the 42 Project Libasm/2020
 #### Prerequisites
 
 [GNU Make](https://www.gnu.org/software/make/)\
-[NASM Compiler](https://www.nasm.us)
+[NASM Compiler](https://www.nasm.us)\
+[Valgrind](https://www.valgrind.org/)
 
 #### Build Instructions
 
@@ -32,12 +32,17 @@ $ bash runtest.sh
 $ bash runtest.sh bonus
 ```
 
-Add successively the functions in the order you want, for example :
-
+Add successively the functions in the order you want, for example
 ```bash
-$ bash runtest.sh read
+$ bash runtest.sh write
 $ bash runtest.sh strlen strdup
 $ bash runtest.sh bonus atoi_base
+```
+
+Check if any memory leak was detected
+```bash
+$ bash runtest.sh leak
+$ bash runtest.sh bonus leak
 ```
 
 Take a look at `/42libasm_tester/unit_tests/diffs` directory for diffs files
@@ -45,7 +50,7 @@ Take a look at `/42libasm_tester/unit_tests/diffs` directory for diffs files
 \
 Some of the outputs examples
 
-![test](https://user-images.githubusercontent.com/56961723/93936914-40a98b80-fcfd-11ea-9066-5f5e90b19e82.png)
+![outputs](https://user-images.githubusercontent.com/56961723/94193242-7fb71880-fe86-11ea-96e4-ef66e5387d38.png)
 
 :warning: &nbsp;&nbsp;&nbsp;not official tests&nbsp;&nbsp;&nbsp;:warning:\
 :warning: still has lots of bugs:warning:

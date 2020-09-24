@@ -57,6 +57,18 @@ function run_each_bonus_function()
 	done
 }
 
+function run_valgrind()
+{
+	bash run_stdfunct.sh strdup leak
+}
+
+function run_valgrind_bonus()
+{
+	bash run_linked_list.sh list_push_front leak
+	bash run_linked_list.sh list_sort leak
+	bash run_linked_list.sh list_remove_if leak
+}
+
 function run_bonus()
 {
 	cd ../
@@ -71,6 +83,9 @@ function run_bonus()
 								list_push_front \
 								list_size list_sort \
 								list_remove_if
+	elif [ "$2" == "leak" ]
+	then
+		run_valgrind_bonus
 	else
 		run_each_bonus_function $@
 	fi
@@ -88,9 +103,12 @@ function run_mandatory()
 		run_each_mandatory_function strlen \
 									strcpy \
 									strcmp \
-									strdup \
+									write \
 									read \
-									write
+									strdup
+	elif [ "$1" == "leak" ]
+	then
+		run_valgrind
 	else
 		run_each_mandatory_function $@
 	fi

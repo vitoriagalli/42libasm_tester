@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 17:19:54 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/24 02:43:12 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 18:48:32 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(int argc, char **argv)
 	int		index;
 	t_list	*list;
 
+	(void)argc;
+	list = NULL;
 	index = atoi(argv[1]);
 	initialize_list(&list, index, ft_list_push_front);
 	ft_print_list(list);

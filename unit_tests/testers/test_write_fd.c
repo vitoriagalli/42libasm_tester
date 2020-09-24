@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:20:50 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/24 02:20:58 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 18:50:22 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		main(int argc, char **argv)
 	int		fd;
 	char	*str;
 
+	(void)argc;
 	str = "Hello World!";
 	fd = open(argv[3], O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (argv[1][0] == FD_OPEN)
