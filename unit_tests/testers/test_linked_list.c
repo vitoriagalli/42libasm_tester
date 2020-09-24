@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 02:48:54 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/23 20:31:19 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:43:34 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,4 @@ void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
 		free(aux);
 	}
 	begin_list = NULL;
-}
-
-int		funct_strcmp(const char *s1, const char *s2)
-{
-	while (*s1 && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-	}
-	return *(const unsigned char*)s1 - *(const unsigned char*)s2;
 }

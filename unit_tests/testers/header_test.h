@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 22:04:20 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/24 02:24:11 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/24 02:43:44 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void				ft_list_remove_if(t_list **begin_list, void *data_ref,
 ** auxiliar functions
 */
 
-int					funct_strcmp(const char *s1, const char *s2);
 void				list_push_front(t_list **begin_list, void *data);
 void				initialize_list(t_list **list, int index, void (*ft)());
 void				ft_print_list(t_list *list);
