@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 22:04:20 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/24 02:43:44 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/26 18:23:37 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 # include <errno.h>
 # include <fcntl.h>
 
-# define FD_OPEN '0'
-# define FD_WRONG '1'
-# define ORIG '0'
-# define IMPLEM '1'
+# define STD 0
+# define FD_OPEN 1
+# define FD_WRONG 2
+# define ORIG 0
+# define IMPLEM 1
 
 size_t				ft_strlen(const char *s);
 char				*ft_strcpy(char *dest, const char *src);

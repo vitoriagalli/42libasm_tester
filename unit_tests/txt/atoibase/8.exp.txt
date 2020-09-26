@@ -1,0 +1,3 @@
+string = 15
+base = 5
+return = 0

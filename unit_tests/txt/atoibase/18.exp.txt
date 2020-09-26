@@ -1,0 +1,3 @@
+string = 501
+base = (null)
+return = 0

@@ -3,29 +3,31 @@
 test_leak()
 {
 	valgrind --leak-check=full \
-			--log-file=valgrind."$1".txt \
+			--log-file=valgrind.txt \
 			./"$FUNCT" "$1" 2>&1 >/dev/null
-	MEM=$(cat valgrind."$1".txt | grep "All heap blocks were freed -- no leaks are possible")
+	MEM=$(cat valgrind.txt | grep "All heap blocks were freed -- no leaks are possible")
 	if [ "$MEM" = "" ]
 	then
 		echo -e "\033[0;31m[LEAK]\033[0m"
 	else
 		echo -e "\033[0;32m[NO_LEAK]\033[0m"
 	fi
-	rm -f valgrind."$1".txt
+	rm -f valgrind.txt
 }
 
-test_function()
+test_output()
 {
 	./"$FUNCT" "$1" > "$1".txt
-	diff "$1".txt txt/"$FUNCT"."$1".exp.txt > diffs/"$FUNCT"."$1".txt
-	DIFF=$(diff "$1".txt txt/"$FUNCT"."$1".exp.txt)
+	DIFF=$(diff "$1".txt txt/linkedlist/"$FUNCT"."$1".exp.txt)
 	if [ "$DIFF" != "" ]
 	then
 		echo -e "\033[0;31m[KO]\033[0m"
+		echo "--- EXPECTED RESULT ---" >> diffs/ft_"$FUNCT"."$1".txt
+		cat txt/linkedlist/"$FUNCT"."$1".exp.txt >> diffs/ft_"$FUNCT"."$1".txt
+		echo "--- ACTUAL RESULT ---" >> diffs/ft_"$FUNCT"."$1".txt
+		cat "$1".txt >> diffs/ft_"$FUNCT"."$1".txt
 	else
 		echo -e "\033[0;32m[OK]\033[0m"
-		rm -rf diffs/"$FUNCT"."$1".txt
 	fi
 	rm -f "$1".txt
 }
@@ -35,12 +37,7 @@ test_input()
 	ERROR=$( ./"$FUNCT" "$1" 2>&1 >/dev/null )
 	if [ $? = 0 ]
 	then
-		if [ "$2" = 'leak' ]
-		then
-			test_leak "$1"
-		else
-			test_function "$1"
-		fi
+		"$TEST" "$1"
 	else
 		echo -e "\033[0;31m[ERROR]\033[0m"
 	fi
@@ -49,6 +46,14 @@ test_input()
 FUNCT=$1
 echo -e ""
 echo -e "\033[0;1m> ft_"$FUNCT"\033[0m"
+
+if [ "$2" = "leak" ]
+then
+	TEST="test_leak"
+else
+	TEST="test_output"
+fi
+
 COMP=$( clang  testers/test_linked_list.c testers/test_"$FUNCT".c \
 		-L. -lasm -o "$FUNCT" 2>&1 >/dev/null )
 if [ $? = 0 ]
@@ -57,7 +62,7 @@ then
 	testers/test_"$FUNCT".c -L. -lasm -g -o "$FUNCT" 2>&1 >/dev/null
 	for i in {0..4}
 	do
-		test_input $i $2
+		test_input $i ${INPUT[i]}
 	done
 	rm -f "$FUNCT"
 else

@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 01:58:04 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/24 19:03:24 by vscabell         ###   ########.fr       */
+/*   Updated: 2020/09/26 19:49:12 by vscabell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		main(int argc, char **argv)
 
 	(void)argc;
 	index = atoi(argv[1]);
-	printf("%i\n", ft_atoi_base(str[index], base[index]));
+	printf("string = %s\n", str[index]);
+	printf("base = %s\n", base[index]);
+	printf("return = %i\n", ft_atoi_base(str[index], base[index]));
 	return (0);
 }

@@ -1,0 +1,3 @@
+string = 05
+base = 012345067890
+return = 0

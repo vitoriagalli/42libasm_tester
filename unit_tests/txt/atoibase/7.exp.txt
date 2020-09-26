@@ -1,0 +1,3 @@
+string = 15256
+base = 
+return = 0

@@ -1,0 +1,3 @@
+string = 122
+base = -123456789
+return = 0
