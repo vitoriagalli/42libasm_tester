@@ -6,7 +6,7 @@
 /*   By: vscabell <vscabell@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:20:50 by vscabell          #+#    #+#             */
-/*   Updated: 2020/09/26 19:21:35 by vscabell         ###   ########.fr       */
+/*   Updated: 2021/04/09 13:33:43 by abrabant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 void	result(ssize_t (*ft)(), int fd)
 {
 	ssize_t	ret;
-	char	buffer[101];
+	char	buffer[101] = {0};
 
 	ret = ft(fd, buffer, 100);
-	buffer[ret] = '\0';
 	printf("buffer = %s\n", buffer);
 	printf("return = %zd\n", ret);
 	printf("errno = %d\n", errno);
